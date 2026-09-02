@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Shadow GK — a custom general knowledge quiz builder.">
+  <meta name="theme-color" content="#08080b">
+  <title>Shadow GK — AI Quiz Engine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#quiz-builder">Skip to quiz builder</a>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="../../index.html" aria-label="Back to Shadow home">SHADOW <span>GK</span></a>
+      <nav aria-label="Primary navigation"><a href="#quiz-builder">Build quiz</a><a href="#categories">Categories</a><a class="nav-back" href="../../pages/projects.html">All projects <span>↗</span></a></nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> Your daily quiz space</p>
+          <h1>Get curious.<br><em>Get sharper.</em></h1>
+          <p>Build a quiz around exactly what you want to practise—from Indian Polity and NCC to World GK, Science, and Reasoning.</p>
+          <a class="button button-primary" href="#quiz-builder">Build your quiz <span>↓</span></a>
+        </div>
+        <div class="hero-art" aria-label="Shadow GK quiz engine logo">
+          <div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div>
+          <img src="../../images/shadow-gk-logo.png" alt="Shadow GK AI Quiz Engine logo" width="1200" height="1200">
+          <p><span>12</span> subjects to explore</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="builder-section" id="quiz-builder">
+      <div class="container">
+        <div class="section-heading">
+          <div><p class="section-label">Quiz builder / 01</p><h2>Make it <em>your own.</em></h2></div>
+          <p>Choose your focus, format, and challenge level. Every new request is shuffled into a fresh quiz set.</p>
+        </div>
+
+        <form class="quiz-builder" id="quiz-form">
+          <div class="builder-grid">
+            <label class="field-card"><span class="field-step">01 / Category</span><span class="field-label">What would you like to study?</span><select id="category" name="category" aria-label="Quiz category"></select></label>
+            <label class="field-card"><span class="field-step">02 / Sub-category</span><span class="field-label">Choose a focused topic</span><select id="subcategory" name="subcategory" aria-label="Quiz sub-category"></select></label>
+            <label class="field-card"><span class="field-step">03 / Level</span><span class="field-label">Set the difficulty</span><select id="level" name="level" aria-label="Quiz difficulty"><option value="basic">Basic</option><option value="easy">Easy</option><option value="medium" selected>Medium</option><option value="hard">Hard</option></select></label>
+            <label class="field-card"><span class="field-step">04 / Question type</span><span class="field-label">How do you want to answer?</span><select id="question-type" name="questionType" aria-label="Question type"><option value="mcq">Multiple choice</option><option value="assertion-reasoning">Assertion &amp; reasoning</option><option value="short-answer">Short answer</option><option value="match-following">Match the following</option></select></label>
+            <label class="field-card count-card"><span class="field-step">05 / Number of questions</span><span class="field-label">How many questions?</span><select id="question-count" name="questionCount" aria-label="Number of questions"><option value="5">5 questions</option><option value="10" selected>10 questions</option><option value="20">20 questions</option><option value="30">30 questions</option><option value="50">50 questions</option></select></label>
+          </div>
+          <div class="builder-footer"><p id="selection-summary" aria-live="polite">Indian General Knowledge · All topics · Medium · Multiple choice · 10 questions</p><button class="button button-primary generate-button" type="submit">Generate my quiz <span>→</span></button></div>
+        </form>
+      </div>
+    </section>
+
+    <section class="quiz-output" id="quiz-output" aria-live="polite" hidden>
+      <div class="container">
+        <div class="quiz-output-header">
+          <div><p class="section-label">Your generated set</p><h2 id="quiz-title">Ready when you are.</h2><p id="quiz-description"></p></div>
+          <div class="quiz-actions"><button class="button button-quiet" type="button" id="show-answers">Show answers</button><button class="button button-primary" type="button" id="new-quiz">New question set <span>↻</span></button></div>
+        </div>
+        <div class="quiz-progress"><span id="quiz-progress-text">0 of 0 answered</span><div><i id="quiz-progress-bar"></i></div></div>
+        <div class="questions-list" id="questions-list"></div>
+      </div>
+    </section>
+
+    <section class="category-section" id="categories">
+      <div class="container"><div class="section-heading"><div><p class="section-label">Topics / 02</p><h2>A world of<br><em>questions.</em></h2></div><p>Start broad, then drill down into the sub-categories that matter most to you.</p></div><div class="category-grid" id="category-grid"></div></div>
+    </section>
+  </main>
+
+  <footer><div class="container footer-wrap"><a class="brand" href="../../index.html">SHADOW <span>GK</span></a><p>Learn · Practise · Grow</p><p>© <span id="year"></span> Shadow</p></div></footer>
+  <script src="js/script.js"></script>
+</body>
+</html>

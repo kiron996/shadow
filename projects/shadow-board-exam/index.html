@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Shadow Board Exam — NCERT-aligned AI question practice for Classes 9 to 12.">
+  <meta name="theme-color" content="#09090b">
+  <title>Shadow Board Exam — NCERT Practice</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-api-base="">
+  <a class="skip-link" href="#generator">Skip to question generator</a>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="../../index.html" aria-label="Back to Shadow home">SHADOW <span>BOARD</span></a>
+      <nav aria-label="Primary navigation"><a href="#generator">Generate</a><a href="#how-it-works">How it works</a><a class="nav-back" href="../../pages/projects.html">All projects <span>↗</span></a></nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> NCERT-focused practice / Classes 9–12</p>
+          <h1>Study with<br><em>direction.</em></h1>
+          <p>Choose the exact chapter and topic you need, then create a focused practice set or timed quiz built around active NCERT curriculum data.</p>
+          <a class="button button-primary" href="#generator">Create a question set <span>↓</span></a>
+        </div>
+        <div class="hero-art" aria-label="Shadow Board Exam logo"><div class="hero-glow"></div><img src="../../images/shadow-board-exam.png" alt="Shadow Board Exam logo" width="1200" height="1200"><p><span>4</span> difficulty levels</p></div>
+      </div>
+    </section>
+
+    <section class="generator-section" id="generator">
+      <div class="container">
+        <div class="section-heading"><div><p class="section-label">Question generator / 01</p><h2>Your course.<br><em>Your practice.</em></h2></div><p>Every academic selector is sourced from the curriculum catalog, so invalid subject and chapter combinations are never shown.</p></div>
+
+        <form class="generator-card" id="generator-form" novalidate>
+          <div class="selection-grid">
+            <label class="select-field"><span>01 / Class</span><select id="class-id" required aria-label="Class"><option value="">Select class</option></select></label>
+            <label class="select-field"><span>02 / Subject</span><select id="subject-id" required disabled aria-label="Subject"><option value="">Select class first</option></select></label>
+            <label class="select-field"><span>03 / Category</span><select id="category-id" required disabled aria-label="Category"><option value="">Select subject first</option></select></label>
+            <label class="select-field"><span>04 / Chapter</span><select id="chapter-id" required disabled aria-label="Chapter"><option value="">Select category first</option></select></label>
+            <label class="select-field"><span>05 / Topic</span><select id="topic" required disabled aria-label="Topic"><option value="">Select chapter first</option></select></label>
+            <label class="select-field"><span>06 / Difficulty</span><select id="difficulty" required aria-label="Difficulty"><option value="basic">Level 1 · Basic</option><option value="intermediate">Level 2 · Intermediate</option><option value="advanced" selected>Level 3 · Advanced</option><option value="expert">Level 4 · Expert</option></select></label>
+            <label class="select-field"><span>07 / Question type</span><select id="question-type" required aria-label="Question type"><option value="mcq">MCQ</option><option value="assertion-reasoning">Assertion &amp; Reasoning</option><option value="match-following">Match the Following</option><option value="short-conceptual">Short &amp; Conceptual</option></select></label>
+            <label class="select-field"><span>08 / Question count</span><select id="count" required aria-label="Number of questions"><option value="5">5 Questions</option><option value="10" selected>10 Questions</option><option value="20">20 Questions</option><option value="30">30 Questions</option><option value="50">50 Questions</option></select></label>
+          </div>
+          <div class="mode-row" role="radiogroup" aria-label="Practice mode"><span>09 / Mode</span><label><input type="radio" name="mode" value="practice" checked> Practice mode <small>Reveal answers as you go</small></label><label><input type="radio" name="mode" value="quiz"> Quiz mode <small>Submit for a score</small></label></div>
+          <div class="generator-footer"><p id="selection-summary" aria-live="polite">Select a class to begin.</p><button class="button button-primary" type="submit" id="generate-button">Generate questions <span>→</span></button></div>
+        </form>
+        <div class="status-message" id="status-message" role="status" hidden></div>
+        <div class="status-message" id="local-file-message" role="alert" hidden></div>
+      </div>
+    </section>
+
+    <section class="question-section" id="questions" hidden>
+      <div class="container">
+        <div class="question-header"><div><p class="section-label">Generated practice set</p><h2 id="set-title">Question set</h2><p id="set-description"></p></div><div class="question-actions"><button class="button button-quiet" type="button" id="print-questions">Print questions</button><button class="button button-quiet" type="button" id="print-answer-key">Print answer key</button><button class="button button-primary" type="button" id="generate-again">Generate again <span>↻</span></button></div></div>
+        <div class="quiz-status" id="quiz-status" hidden><div class="progress-track"><i id="progress-bar"></i></div><p id="progress-text">Question 1 of 10</p><div class="question-nav" id="question-nav" aria-label="Question navigation"></div></div>
+        <div id="question-list" class="question-list"></div>
+        <div class="quiz-controls" id="quiz-controls" hidden><button class="button button-quiet" type="button" id="previous-question">← Previous</button><button class="button button-quiet" type="button" id="next-question">Next →</button><button class="button button-primary" type="button" id="submit-quiz">Submit quiz <span>✓</span></button></div>
+        <section class="result-card" id="result-card" hidden aria-live="polite"><p class="section-label">Quiz completed</p><h2>🎯 Your result</h2><div class="result-metrics"><div><strong id="score-value">0 / 0</strong><span>Score</span></div><div><strong id="percentage-value">0%</strong><span>Percentage</span></div><div><strong id="correct-value">0</strong><span>Correct</span></div><div><strong id="wrong-value">0</strong><span>Wrong</span></div></div><button class="button button-primary" type="button" id="review-answers">Review answers <span>↓</span></button></section>
+      </div>
+    </section>
+
+    <section class="how-section" id="how-it-works"><div class="container"><div class="section-heading"><div><p class="section-label">How it works / 02</p><h2>Focused, safe<br><em>and structured.</em></h2></div><p>The generated response is checked before it is shown, with a clear message if the service is not available.</p></div><div class="how-grid"><article><span>01</span><h3>Curriculum selection</h3><p>Class-specific subjects, categories, chapters, and topics are read from a maintainable NCERT catalog.</p></article><article><span>02</span><h3>AI generation</h3><p>The backend sends only your selected academic context to the model and requests predictable JSON.</p></article><article><span>03</span><h3>Practice or quiz</h3><p>Reveal detailed answers in practice mode, or submit a quiz to get your score and review.</p></article></div></div></section>
+  </main>
+
+  <footer><div class="container footer-wrap"><a class="brand" href="../../index.html">SHADOW <span>BOARD</span></a><p>Learn · Practise · Improve</p><p>© <span id="year"></span> Shadow</p></div></footer>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const classSelect = document.getElementById('class-id');
+      const message = document.getElementById('local-file-message');
+      window.setTimeout(() => {
+        if (location.protocol !== 'file:' || !classSelect || classSelect.options.length > 1) return;
+        message.hidden = false;
+        message.textContent = 'The Class selector needs a local web server. Do not double-click this HTML file: run start-shadow-website.bat from the project folder, then use the page that opens at http://127.0.0.1:4173/.';
+      }, 0);
+    });
+  </script>
+  <script type="module" src="js/script.js?v=20260902-board-api"></script>
+</body>
+</html>
